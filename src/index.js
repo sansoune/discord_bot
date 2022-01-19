@@ -52,6 +52,8 @@ client.on('messageCreate', (message) => {
     if(!command) return message.reply("this command does not exist")
 
     command.run(message, args, client)
+
+    
         
 })
 
