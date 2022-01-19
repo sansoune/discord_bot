@@ -2,10 +2,11 @@ const Discord = require('discord.js')
 const dotenv = require('dotenv')
 const fs = require('fs')
 const path = require('path')
+const AsciiTable = require('ascii-table')
 dotenv.config()
 
 
-const Welcome = require('./events/Welcome')
+
 
 const client = new Discord.Client({
     intents: [
@@ -19,11 +20,19 @@ client.commands = new Discord.Collection()
 
 
 //npm rebuild node-sass
+const command_table = new AsciiTable('commands')
+command_table.setHeading("name", "satus")
 
 fs.readdirSync(path.resolve(__dirname, 'commands/')).filter(file => file.endsWith('.js')).forEach(file => {
     const command = require(`./commands/${file}`)
-    console.log(`command ${command.name} has bean loaded `)
+    // console.log(`command ${command.name} has bean loaded `)
+    command_table.addRow(`${command.name}`, 'loded')
     client.commands.set(command.name, command)
+})
+console.log(command_table.toString())
+
+fs.readdirSync(path.resolve(__dirname, 'events/')).filter(file => file.endsWith('.js')).forEach(file => {
+    const event = require(`./events/${file}`)(client)
 })
 
 
@@ -31,7 +40,6 @@ fs.readdirSync(path.resolve(__dirname, 'commands/')).filter(file => file.endsWit
 client.on('ready', () => {
     console.log('the bot is working')
 
-    Welcome(client)
 })
 
 client.on('messageCreate', (message) => {
