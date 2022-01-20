@@ -9,11 +9,12 @@ dotenv.config()
 
 
 const client = new Discord.Client({
-    intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-        Discord.Intents.FLAGS.GUILD_MEMBERS,
-    ]
+    intents: 32767
+    // [
+    //     Discord.Intents.FLAGS.GUILDS,
+    //     Discord.Intents.FLAGS.GUILD_MESSAGES,
+    //     Discord.Intents.FLAGS.GUILD_MEMBERS,
+    // ]
 })
 
 client.commands = new Discord.Collection()
@@ -51,9 +52,8 @@ client.on('messageCreate', (message) => {
 
     if(!command) return message.reply("this command does not exist")
 
-    command.run(message, args, client)
+    command.run(message, args, client, Discord)
 
-    
         
 })
 

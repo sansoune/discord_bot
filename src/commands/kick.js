@@ -1,5 +1,6 @@
 module.exports = {
     name: 'kick',
+    discription: "this command kick a user",
     async run(message, args) {
         const member = message.mentions.users.first()
         if(!message.member.permissions.has('ADMINISTRATOR')) return message.reply("you dont have the permission")
