@@ -27,7 +27,7 @@ command_table.setHeading("name", "satus")
 fs.readdirSync(path.resolve(__dirname, 'commands/')).filter(file => file.endsWith('.js')).forEach(file => {
     const command = require(`./commands/${file}`)
     // console.log(`command ${command.name} has bean loaded `)
-    command_table.addRow(`${command.name}`, 'loded')
+    command_table.addRow(`${command.name}`, '✅')
     client.commands.set(command.name, command)
 })
 console.log(command_table.toString())
@@ -55,7 +55,8 @@ client.on('messageCreate', (message) => {
     command.run(message, args, client, Discord)
     
     // message.guild.bans.fetch()
-        
+    
+
 })
 
 
