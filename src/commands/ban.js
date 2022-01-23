@@ -8,7 +8,7 @@ module.exports = {
         if(member) {
             const target = message.guild.members.cache.get(member.id)
             target.ban()
-            message.channel.send('user has bean banned')
+            message.channel.send('user has been banned')
         }else {
             message.channel.send('please specify a user')
         }
