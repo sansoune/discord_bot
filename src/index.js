@@ -41,6 +41,16 @@ fs.readdirSync(path.resolve(__dirname, 'events/')).filter(file => file.endsWith(
 client.on('ready', () => {
     console.log('the bot is working')
 
+    const status_array = ["I am your guide to the new world", "just type \"nano help \""]
+    let index = 0
+    setInterval(() => {
+        if(index === status_array.length) index = 0
+        const status = status_array[index]
+        client.user.setActivity(status)
+        client.user.setStatus(status)
+        index++
+    }, 5000)
+
 })
 
 client.on('messageCreate', (message) => {
@@ -55,7 +65,6 @@ client.on('messageCreate', (message) => {
     command.run(message, args, client, Discord)
     
     // message.guild.bans.fetch()
-    message.member.permissions.has('MANAGE_ROLES')
     
     
 
