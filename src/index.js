@@ -1,9 +1,7 @@
 const Discord = require('discord.js')
-const dotenv = require('dotenv')
 const fs = require('fs')
 const path = require('path')
 const AsciiTable = require('ascii-table')
-dotenv.config()
 
 
 
@@ -11,12 +9,13 @@ dotenv.config()
 const client = new Discord.Client({
     intents: 32767
     // [
-    //     Discord.Intents.FLAGS.GUILDS,
-    //     Discord.Intents.FLAGS.GUILD_MESSAGES,
-    //     Discord.Intents.FLAGS.GUILD_MEMBERS,
-    // ]
-})
-
+        //     Discord.Intents.FLAGS.GUILDS,
+        //     Discord.Intents.FLAGS.GUILD_MESSAGES,
+        //     Discord.Intents.FLAGS.GUILD_MEMBERS,
+        // ]
+    })
+    
+client.config = require('./config.json')
 client.commands = new Discord.Collection()
 
 
@@ -54,7 +53,7 @@ client.on('ready', () => {
 })
 
 client.on('messageCreate', (message) => {
-    const prefix = 'nano'
+    const prefix = client.config.prefix
     if (!message.content.startsWith(prefix)) return;
     const args = message.content.substring(prefix.length + 1).split(/ +/)
     console.log(args)
@@ -75,4 +74,4 @@ client.on('messageCreate', (message) => {
 
 
 
-client.login(process.env.TOKEN)
+client.login(client.config.token)

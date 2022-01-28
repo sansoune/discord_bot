@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js')
 
 module.exports = (client) => {
-    const channelId = '932352313098657823'
+    const channelId = client.config.welcome_ch
     client.on("guildMemberAdd", (member) => {
         console.log(member)
         let role = member.guild.roles.cache.find(role => role.name === "member");
