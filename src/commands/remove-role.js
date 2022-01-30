@@ -8,8 +8,8 @@ module.exports = {
         if(!user) return message.channel.send(`please specify a user`)
         if(!role) return message.channel.send("you didn't specify a role")
         const target = message.guild.members.cache.get(user.id)
-        console.log(role)
-        target.roles.remove(role.name)
+        console.log(role.name)
+        target.roles.remove(role)
         message.channel.send(`I have removed from ${user} the role of ${role.name}`)
     }
 }
