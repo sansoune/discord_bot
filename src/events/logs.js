@@ -8,26 +8,26 @@ module.exports = (client) => {
     client.on('channelDelete', channel => {
         log_msg(client, channel.guild.id, "RED", "channel deleted", `A new channel was deleted \n\n \n channel name: ${channel.name} \n\n channel id: ${channel.id} \n\n channel type: ${channel.type}`)
     })
-    client.on('guildMemberAdd', channel => {
-        log_msg(client, channel.guild.id, "YELLOW", "channel deleted", `A new channel was deleted \n\n \n channel name: ${channel.name} \n\n channel id: ${channel.id} \n\n channel type: ${channel.type}`)
+    client.on('guildMemberAdd', member => {
+        log_msg(client, member.guild.id, "YELLOW", "nw user joined", `a new user was joined the server \n\n ${member.user.tag}`)
     })
-    client.on('guildMemberRemove', channel => {
-        log_msg(client, channel.guild.id, "BLUE", "channel deleted", `A new channel was deleted \n\n \n channel name: ${channel.name} \n\n channel id: ${channel.id} \n\n channel type: ${channel.type}`)
+    client.on('guildMemberRemove', member => {
+        log_msg(client, member.guild.id, "YELLOW", "a user left", `${member.user.tag} has quit the server`)
     })
-    client.on('roleDelete', channel => {
-        log_msg(client, channel.guild.id, "BLUE", "channel deleted", `A new channel was deleted \n\n \n channel name: ${channel.name} \n\n channel id: ${channel.id} \n\n channel type: ${channel.type}`)
+    client.on('roleDelete', role => {
+        log_msg(client, role.guild.id, "BLUE", "role deleted", `${role.name}`)
     })
-    client.on('roleCreate', channel => {
-        log_msg(client, channel.guild.id, "BLUE", "channel deleted", `A new channel was deleted \n\n \n channel name: ${channel.name} \n\n channel id: ${channel.id} \n\n channel type: ${channel.type}`)
+    client.on('roleCreate', role => {
+        log_msg(client, role.guild.id, "BLUE", "role created", `${role}`)
     })
-    client.on('roleUpdate', channel => {
-        log_msg(client, channel.guild.id, "BLUE", "channel deleted", `A new channel was deleted \n\n \n channel name: ${channel.name} \n\n channel id: ${channel.id} \n\n channel type: ${channel.type}`)
+    client.on('roleUpdate', role => {
+        log_msg(client, role.guild.id, "BLUE", "role updated", `${role}`)
     })
-    client.on('guildBanAdd', channel => {
-        log_msg(client, channel.guild.id, "BLUE", "channel deleted", `A new channel was deleted \n\n \n channel name: ${channel.name} \n\n channel id: ${channel.id} \n\n channel type: ${channel.type}`)
+    client.on('guildBanAdd', member => {
+        log_msg(client, member.guild.id, "PURPLE", "a member was banned", `${member.user.tag} was banned`)
     })
-    client.on('guildBanRemove', channel => {
-        log_msg(client, channel.guild.id, "BLUE", "channel deleted", `A new channel was deleted \n\n \n channel name: ${channel.name} \n\n channel id: ${channel.id} \n\n channel type: ${channel.type}`)
+    client.on('guildBanRemove', member => {
+        log_msg(client, member.guild.id, "PURPLE", "a member was debanned", `${member.user.tag} was de banned`)
     })
 
     const log_msg = async (client, guildid, color, title, discription) => {

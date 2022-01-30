@@ -13,6 +13,5 @@ module.exports = {
             }else {
                 message.channel.send('please specify a user')
             }
-            console.log(message.member.permissions.has('ADMINISTRATOR'))
         }    
 }
