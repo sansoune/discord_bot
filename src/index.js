@@ -64,8 +64,7 @@ client.on('messageCreate', (message) => {
     command.run(message, args, client, Discord)
     
     // message.guild.bans.fetch()
-    
-    
+    // message.channel.send({ })
 
 })
 
