@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/profile', upload.single('memes'), (req,res) => {
-    console.log(req.file)
+    // console.log(req.file)
     res.send("file uploaded")
     console.log("done")
 })
