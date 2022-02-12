@@ -35,6 +35,4 @@ fs.readdirSync(path.resolve(__dirname, 'events/')).filter(file => file.endsWith(
     const event = require(`./events/${file}`)(client)
 })
 
-
-
 client.login(client.config.token)

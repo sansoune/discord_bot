@@ -1,6 +1,9 @@
+
+
 module.exports = (client) => {
     client.on('messageCreate', (message) => {
         const prefix = client.config.prefix
+        // if(message.channel.id === client.config.bot_channel && !message.author.bot) bot(client, message)
         if (!message.content.startsWith(prefix)) return;
         const args = message.content.substring(prefix.length + 1).split(/ +/)
         console.log(args)
@@ -10,8 +13,7 @@ module.exports = (client) => {
     
         command.run(message, args, client, Discord)
         
-        // message.guild.bans.fetch()
-        // message.channel.send({ })
+        
     
     })
 }
