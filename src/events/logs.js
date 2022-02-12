@@ -42,7 +42,7 @@ module.exports = (client) => {
             const channel = await client.channels.cache.get(client.config.logs_ch)
             channel.send({embeds: [embed]})
         } catch (error) {
-            throw err
+            throw err;
         }
     }
 }
